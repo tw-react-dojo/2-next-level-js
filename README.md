@@ -1,4 +1,4 @@
-# Astronauts in Space
+# Currency Conversion
 
 ## Installation
 
@@ -17,4 +17,4 @@ Install [serve](https://www.npmjs.com/package/serve).
 - `npm install -g serve`
 - `serve -s build`
 
-_hint:_ `npm build` will actually suggest you that ^ 
+_hint:_ `npm build` will actually suggest you that ^
