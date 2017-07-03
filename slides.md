@@ -58,49 +58,8 @@ export function theApp(value)
   }
 }
 ```
----
 
-# From Zero ❌
-
-```javascript, [.highlight: 1]
-import {moment} from "moment";
-
-export function theApp(value)
-{
-  if (!Number.isInteger(Number(value))) {
-    return <App title="Simple Title" height={200} onClick={ onClick } onEdit={onEdit}/>;
-  }
-}
-```
----
-
-# From Zero ❌
-
-```javascript, [.highlight: 4]
-import {moment} from "moment";
-
-export function theApp(value)
-{
-  if (!Number.isInteger(Number(value))) {
-    return <App title="Simple Title" height={200} onClick={ onClick } onEdit={onEdit}/>;
-  }
-}
-```
----
-
-# From Zero ❌
-
-```javascript, [.highlight: 6]
-import {moment} from "moment";
-
-export function theApp(value)
-{
-  if (!Number.isInteger(Number(value))) {
-    return <App title="Simple Title" height={200} onClick={ onClick } onEdit={onEdit}/>;
-  }
-}
-```
----
+ ---
 
 # To Hero ✅
 
