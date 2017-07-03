@@ -9,7 +9,9 @@ begin hark sauce editor sign
 
 ---
 
-# Arrows 🎯
+> Always leave the campground cleaner than you found it.
+
+![](https://68.media.tumblr.com/tumblr_lriuezGhzw1ql9e9go1_1316018627_cover.jpg)
 
 ---
 
@@ -17,7 +19,48 @@ begin hark sauce editor sign
 
 ---
 
+> Not everything is a variable
+
+---
+
+# Arrows 🎯
+
+---
+
+# Old Way
+
+```js
+var that = this
+methodWithCallback(function(result) {
+  that.result = result
+})
+```
+
+---
+
+# New Way
+
+```js
+methodWithCallback((result) => {
+  this.result = result
+})
+```
+
+---
+
 # Template strings
+
+---
+
+```js
+string = "the result is: " + result
+```
+
+---
+
+```js
+string = `the result is: ${result}`
+```
 
 ---
 
@@ -25,7 +68,47 @@ begin hark sauce editor sign
 
 ---
 
+```js
+const loaded = this.state.loaded;
+const error = this.state.error;
+const rates = this.state.rates;
+const date = this.state.date;
+```
+
+---
+
+```js
+const {
+  loaded, 
+  error, 
+  rates, 
+  date 
+} = this.state
+```
+
+---
+
 # Spread Operator
+
+---
+
+```js
+var newState = that.state;
+newState.loaded = true;
+newState.rates = data.rates;
+```
+
+---
+
+```js
+var newState = Object.assign(oldState, {prop: newProp});
+```
+
+---
+
+```js
+const newState = {...state, loaded: true, rates}
+```
 
 ---
 
@@ -33,7 +116,56 @@ begin hark sauce editor sign
 
 ---
 
+```js
+var React = require("react");
+```
+
+---
+
+```js
+import React, { Component } from 'react'
+```
+
+---
+
 # Promises 🙏
+
+---
+
+![](https://image.slidesharecdn.com/promisesandchaininginangularjs-141027044455-conversion-gate02/95/promises-and-chaining-in-angularjs-into-callback-hell-and-back-again-17-638.jpg?cb=1414385382)
+
+---
+
+# Promises
+
+```js
+aPromise
+    .then(result => doSomethingAsyncReturnStuff(result))
+    .then(stuff => asyncCall(stuff))
+    .then(endMethod)
+    .catch(error => console.log(`whoops! ${error}`))
+```
+
+---
+
+# Promise Everything
+
+```js
+const promiseVersion = (options) => new Promise((resolve, reject) => {
+  doAsyncMethod(options, (result, error) => {
+    if (error) {
+      reject()
+    } else {
+      resolve(result)
+    }
+  })
+})
+
+promiseVersion()
+  .then(result)
+  .catch(error => console.log(`whoops! ${error}`))
+
+```
 
 ---
 

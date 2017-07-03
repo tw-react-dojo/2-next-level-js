@@ -38,7 +38,20 @@ class App extends React.Component {
 
     var rateComponents  = []
     for (var rate in rates) {
-      rateComponents.push(<tr key={rate}><td>{rate}</td><td>{rates[rate]}</td></tr>)
+      rateComponents.push(React.createElement(
+        "tr",
+        { key: rate },
+        React.createElement(
+          "td",
+          null,
+          rate
+        ),
+        React.createElement(
+          "td",
+          null,
+          rates[rate]
+        )
+      ))
     }
 
     return <div className="App">
