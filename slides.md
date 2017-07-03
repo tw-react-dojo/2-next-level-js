@@ -5,7 +5,7 @@
 begin hark sauce editor sign
 #### Hosted by ThoughtWorks / Presented by @cris7ian
 
-#### `git clone https://github.com/cris7ian/next-level-js`
+#### `git clone https://github.com/tw-react-dojo/2-next-level-js`
 
 ---
 
