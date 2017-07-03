@@ -1,68 +1,68 @@
-import React, { Component } from 'react'
-import keys from 'lodash/keys'
-import moment from 'moment'
-import './App.css'
+import "./App.css";
+var moment = require("moment");
+var React = require("react");
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       loaded: false,
-      date: '',
+      date: "",
       error: null,
       rates: []
-    }
+    };
   }
 
   componentWillMount() {
-    fetch('http://api.fixer.io/latest')
-      .then(r => r.json())
-      .then(({ rates, date }) =>
-        this.setState({
-          ...this.state,
-          loaded: true,
-          rates,
-          date
-        })
-      )
-      .catch(error => {
-        console.log(`error: ${error}`)
-        this.setState({
-          ...this.state,
-          loaded: true,
-          error
-        })
-      })
+    var that = this;
+    window.$.ajax({
+      url: "http://api.fixer.io/latest",
+      type: "GET",
+      success: function(data) {
+        var newState = that.state;
+        newState.loaded = true;
+        newState.rates = data.rates;
+        that.setState(newState);
+      },
+      error: function(error) {
+        alert("error: " + error);
+      }
+    });
   }
 
   render() {
-    const { loaded, error, rates, date } = this.state
-    return (
-      <div className="App">
-        <h1>Rates</h1>
-        {!loaded && <span>loading rates</span>}
-        {loaded && error && <span>Error getting rates!</span>}
-        {loaded &&
-          !error &&
-          <div>
-            Rates from {moment(date).fromNow()}
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th>Rate</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {keys(rates).map(rate => (
-                  <tr key={rate}><td>{rate}</td><td>{rates[rate]}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>}
-      </div>
-    )
+    var loaded = this.state.loaded;
+    var error = this.state.error;
+    var rates = this.state.rates;
+    var date = this.state.date;
+
+    var rateComponents  = []
+    for (var rate in rates) {
+      rateComponents.push(<tr key={rate}><td>{rate}</td><td>{rates[rate]}</td></tr>)
+    }
+
+    return <div className="App">
+      <h1>Rates</h1>
+      {!loaded && <span>loading rates</span>}
+      {loaded && error && <span>Error getting rates!</span>}
+      {loaded &&
+      !error &&
+      <div>
+        Rates from {moment(date).fromNow()}
+        <table className="table table-hover">
+          <thead>
+          <tr>
+            <th>Rate</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          {rateComponents}
+          </tbody>
+        </table>
+      </div>}
+    </div>;
   }
 }
 
-export default App
+export default App;
