@@ -21,6 +21,7 @@ class App extends React.Component {
       success: function(data) {
         var newState = that.state;
         newState.loaded = true;
+        newState.date = data.date;
         newState.rates = data.rates;
         that.setState(newState);
       },
